@@ -1,0 +1,100 @@
+﻿@model Ukhalelani_Helpdesk.Models.ComplaintModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/complaintDetailView.css">
+</head>
+
+<div class="form-container">
+    <h1 id="title" style="text-align: center; padding: 0 10px; margin-bottom: 30px;">View Complaints</h1>
+    <form id="survey-form">
+        <dl class="dl-horizontal">
+
+          
+
+            <div class="u-form-group">
+                <h3>@Html.DisplayNameFor(model => model.ComplaintType) : @Html.DisplayFor(model => model.ComplaintType)</h3>
+            </div>
+
+            <div class="u-form-group">
+                <textarea id="comments" class="input-textarea image-uploaded" name="comment" placeholder="Image Uploaded by user">
+                </textarea>
+            </div>
+
+
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.complaintID) : @Html.DisplayFor(model => model.complaintID)</p>
+            </div>
+
+           
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</p>
+            </div>
+
+        
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.ComDate) : @Html.DisplayFor(model => model.ComDate)</p>
+            </div>
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(model => model.Status)</p>
+            </div>
+
+
+            <div class="u-form-group">
+                <p>Location</p>
+            </div>
+
+
+           
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.Street) : @Html.DisplayFor(model => model.Street)</p>
+            </div>
+
+            
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.City) : @Html.DisplayFor(model => model.City)</p>
+            </div>
+
+           
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.Province) : @Html.DisplayFor(model => model.Province)</p>
+            </div>
+
+         
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.PostalCode) : @Html.DisplayFor(model => model.PostalCode)</p>
+            </div>
+
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.Description) : @Html.DisplayFor(model => model.Description)</p>
+            </div>
+
+            <div class="u-form-group">
+                <p>@Html.DisplayNameFor(model => model.Response) : @Html.DisplayFor(model => model.Response)</p>
+            </div>
+
+            <div class="u-form-group">
+                <button type="submit" id="submit" class="u-form-group back-to-home">
+                    @Html.ActionLink("Back to Search", "Index")
+                </button>
+            </div>
+
+        </dl>
+    </form>
+</div>
+
+
+

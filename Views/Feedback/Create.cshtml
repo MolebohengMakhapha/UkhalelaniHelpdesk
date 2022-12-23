@@ -1,0 +1,53 @@
+﻿@model FirebaseAuthentication.Models.Feedback
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/feedbackPages.css">
+</head>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-container">
+    <h1 id="title" style="color:#fff; text-align: center; padding: 0 10px; margin-bottom: 30px; margin-top: -50px;">Feedback Form</h1>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <form id="survey-form">
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "email form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "input-textarea form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group">
+            <input type="submit" value="Submit" class="feedback-submit-button" />
+        </div>
+    </form>
+
+</div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

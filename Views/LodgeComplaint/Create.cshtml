@@ -1,0 +1,124 @@
+﻿@model Ukhalelani_Helpdesk.Models.ComplaintModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/editComplaint.css">
+</head>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-container">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger", })
+    <h1 id="title" style="text-align: center; padding: 0 10px; margin-bottom: 30px;">Lodge Complaint</h1>
+    <form id="survey-form">
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.ComplaintType, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EnumDropDownListFor(x => x.ComplaintType, new { @class = "labels form-control category-dropdown" })
+                @Html.ValidationMessageFor(model => model.ComplaintType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="u-form-group frame center">
+            <h1 class="upload-title">Drop file to upload</h1>
+            <div class="dropzone">
+                <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+                <input type="file" class="upload-input" />
+            </div>
+            <button type="button" class="upload-btn" name="uploadbutton">Upload Image</button>
+
+        </div>
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.ComDate, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.ComDate, new { htmlAttributes = new { @class = "labels form-control date-lodged" } })
+                @Html.ValidationMessageFor(model => model.ComDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+   
+
+        <div class="u-form-group">
+            <p>Location</p>
+        </div>
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+   
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Province, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "input-textarea form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group">
+            <button type="submit" id="submit-edit" class="submit-button">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

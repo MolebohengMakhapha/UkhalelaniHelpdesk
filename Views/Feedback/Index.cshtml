@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FirebaseAuthentication.Models.Feedback>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/feedback.css">
+</head>
+
+
+
+<div class="form-container">
+    <h1 id="title" style="text-align: left; padding: 0 10px; margin-bottom: 30px; color: aliceblue; margin-left: 50px; padding-top: 20px">Feedback</h1>
+    <button class="give-feedback" id="give-feedback">@Html.ActionLink("Give Feedback", "Create")</button>
+    <section id="media">
+        <div class="videos">
+            @foreach (var item in Model)
+            {
+                <div class="video">
+                    <h1 class="user-heading" style="font-size: 20px; color: white;">  @Html.DisplayFor(modelItem => item.Email)</h1>
+                    <p class="desc">@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+

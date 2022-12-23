@@ -1,0 +1,157 @@
+﻿@model Ukhalelani_Helpdesk.Models.ComplaintModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/editComplaint.css">
+</head>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-container">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.complaintID)
+    <h1 id="title" style="text-align: center; padding: 0 10px; margin-bottom: 30px;">Edit Complaint</h1>
+    <form id="survey-form">
+
+        <div class="u-form-group">
+            <h1>@Html.DisplayNameFor(model => model.ComplaintType) : @Html.DisplayFor(model => model.ComplaintType)</h1>
+        </div>
+
+
+        <div class="u-form-group">
+            <p>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</p>
+        </div>
+
+        <div class="u-form-group">
+            <p>@Html.DisplayNameFor(model => model.ComDate) : @Html.DisplayFor(model => model.ComDate)</p>
+        </div>
+
+        <div class="u-form-group">
+            <p>@Html.DisplayNameFor(model => model.Street) : @Html.DisplayFor(model => model.Street)</p>
+        </div>
+
+        <div class="u-form-group">
+            <p>@Html.DisplayNameFor(model => model.City) : @Html.DisplayFor(model => model.City)</p>
+        </div>
+
+        <div class="u-form-group">
+            <p>@Html.DisplayNameFor(model => model.Province) : @Html.DisplayFor(model => model.Province)</p>
+        </div>
+
+        <div class="u-form-group">
+            <p>@Html.DisplayNameFor(model => model.PostalCode) : @Html.DisplayFor(model => model.PostalCode)</p>
+        </div>
+
+        <div class="u-form-group">
+            <p>@Html.DisplayNameFor(model => model.Description) : @Html.DisplayFor(model => model.Description)</p>
+        </div>
+
+
+
+
+
+
+        <div class="u-form-group" hidden>
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label" })
+            <div class="">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.ComDate, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.ComDate, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.ComDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group" hidden>
+            @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "form-label" })
+            <div class="">
+                @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group" hidden>
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "form-label" })
+            <div class="">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group" hidden>
+            @Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "form-label" })
+            <div class="">
+                @Html.EditorFor(model => model.Province, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group" hidden>
+            @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "form-label" })
+            <div class="">
+                @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group" hidden>
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "form-label" })
+            <div class="">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "labels form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Response, htmlAttributes: new { @class = "response form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Response, new { htmlAttributes = new { @class = "input-textarea form-control" } })
+                @Html.ValidationMessageFor(model => model.Response, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EnumDropDownListFor(x => x.Status, new { @class = "labels form-control category-dropdown" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="u-form-group">
+            <input type="submit" value="Save" class="submit-button" />
+        </div>
+
+       
+    </form>
+</div>
+
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+        

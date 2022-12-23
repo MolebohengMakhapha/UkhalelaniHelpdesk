@@ -1,0 +1,236 @@
+﻿@model IEnumerable<Ukhalelani_Helpdesk.Models.ComplaintModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/complaintSearch.css">
+</head>
+
+
+<div class="form-container">
+    <h1 id="title" style="text-align: center; padding: 0 10px; margin-bottom: 30px;">View Complaints</h1>
+    <div class="top">
+        <h3 id="search-text" class="search-instruct" style="color: white;">Please search below using your Name.</h3>
+        <button id="new-complaint">
+            @if (@HttpContext.Current.Session["AccessRight"] != null)
+            {
+                if (@HttpContext.Current.Session["AccessRight"].ToString() == "Admin")
+                {
+                    @Html.ActionLink("Back to home", "Index", "Home")
+                }
+                if (@HttpContext.Current.Session["AccessRight"].ToString() == "User")
+                {
+                    @Html.ActionLink("New Complaint", "Create")
+                }
+            }
+        </button>
+    </div>
+    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Name: e.g. Jane" class="search-box">
+    <button id="search-ticket">Search</button>
+    <div style="overflow-x:auto;">
+        <table class="table" id="myTable">
+            <tr>
+                <th onclick="sortTable(0)">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th onclick="sortTable(1)">
+                    @Html.DisplayNameFor(model => model.ComplaintType)
+                </th>
+                <th onclick="sortTable(2)">
+                    @Html.DisplayNameFor(model => model.complaintID)
+                </th>
+                <th onclick="sortTable(3)">
+                    @Html.DisplayNameFor(model => model.ComDate)
+                </th>
+                <th onclick="sortTable(4)" hidden>
+                    @Html.DisplayNameFor(model => model.Street)
+                </th>
+                <th onclick="sortTable(5)" hidden>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th onclick="sortTable(6)" hidden>
+                    @Html.DisplayNameFor(model => model.Province)
+                </th>
+                <th onclick="sortTable(7)" hidden>
+                    @Html.DisplayNameFor(model => model.PostalCode)
+                </th>
+                <th onclick="sortTable(8)" hidden>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th onclick="sortTable(9)">Complaint Status</th>
+                <th>View</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplaintType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.complaintID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComDate)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Province)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td class="view">
+        
+
+                @* Official & User Condition link *@
+                @if (@HttpContext.Current.Session["AccessRight"] != null)
+                {
+                    if (@HttpContext.Current.Session["AccessRight"].ToString() == "Admin")
+                    {
+                        <button class="view-button view-link">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.complaintID })
+                        </button>
+
+                     
+
+                        <button class="view-button view-link">
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.complaintID })
+                        </button>
+                    }
+                    if (@HttpContext.Current.Session["AccessRight"].ToString() == "User")
+                    {
+                        <button class="view-button view-link">
+                            @Html.ActionLink("Detail", "Detail", new { id = item.complaintID })
+                        </button>
+                    }
+                }
+            </td>
+        </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+                
+
+<script>
+    function sortTable(n) {
+
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+
+        //Set the sorting direction to ascending:
+        dir = "asc";
+
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.getElementsByTagName("TR");
+
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+
+
+    /* Search Table By Title */
+    function searchTable() {
+
+        // Declare variables
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+
+</script>
+
+
+
+
+                           
+
+               

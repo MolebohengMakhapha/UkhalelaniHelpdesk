@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "SuccessfullyLodge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/complaintConfirmation.css">
+</head>
+
+<div class="form-container">
+    <h1 id="title" style="text-align: center; padding: 0 10px; margin-bottom: 30px;">Success!</h1>
+    <form id="survey-form">
+        <h1 class="success">
+            You have successfully lodged a complaint!
+        </h1>
+        <h4 class="ticket-number">
+            Click on the button below, and search for your complaint using your name, and note down your reference number.
+        </h4>
+
+        <h5 class="status">
+            Complaint Status: <span class="default-status">
+                Pending
+            </span>
+        </h5>
+
+        <div class="u-form-group">
+            <button type="submit" id="submit" class="submit-button">
+                @Html.ActionLink("Back to Search", "Index", "LodgeComplaint")
+            </button>
+        </div>
+    </form>
+</div>

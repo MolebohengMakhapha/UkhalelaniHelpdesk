@@ -1,0 +1,82 @@
+﻿@model FirebaseAuthentication.Models.SignUp
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/styles/common.css">
+    <link rel="stylesheet" href="~/Content/styles/login.css">
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-container">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger validation-summary-errors" })
+    <h1 id="title" style="text-align: center; padding: 0 10px; margin-bottom: 30px;">Register New Account</h1>
+    <form id="survey-form">
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "name form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+       
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "email form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+     
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "password form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="u-form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "form-label required" })
+            <div class="">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "password form-control" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        
+
+        <div class="u-form-group">
+            <div id="forgot-password">
+                @Html.ActionLink("Already have an account?", "Login")
+            </div>
+        </div>
+
+       
+        <div class="u-form-group submit-register">
+            <button type="submit" id="submit" class="submit-button">
+                Create Account
+            </button>
+        </div>
+    </form>
+</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
