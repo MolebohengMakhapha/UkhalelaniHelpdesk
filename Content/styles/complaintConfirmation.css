@@ -1,0 +1,10 @@
+.status{
+    text-align: left;
+    padding-left: 10px;
+}
+
+.default-status{
+    color: chartreuse;
+    text-align: left;
+    padding-left: 10px;
+}

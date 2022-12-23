@@ -1,0 +1,112 @@
+#searchInput {
+    width: 78%;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    border-radius: 5px;
+}
+
+#myTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#categories, #search-text{
+  text-align: left;
+}
+
+/* zebra striping */
+tr:nth-of-type(odd) {
+    background: #f0f0f0;
+}
+
+th {
+    background: #25424c;
+    color: white;
+    font-weight: bold;
+}
+
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#search-text{
+    margin: 0;
+    display: inline-block;
+}
+
+.search-box{
+    max-width: 100%;
+}
+
+.top{
+    padding-bottom: 20px;
+}
+
+
+#new-complaint{
+    background-color: #fb770d;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 20%;
+    height: 30px;
+    float: right;
+}
+
+#new-complaint:hover{
+    background-color: #8d450a;
+}
+
+#new-complaint a{
+    color: #fff;
+    text-decoration: none;
+}
+
+#myTable tr:hover {
+    background-color: skyblue;
+}
+
+.view-button {
+    text-align: center;
+    background-color: #fb770d;
+    width: 40%;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    margin: auto;
+}
+
+#search-text{
+    text-align: left;
+}
+
+#view-button:hover{
+    background-color: #8d450a;
+}
+
+.view-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+#search-ticket {
+    background-color: #fb770d;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    float: right;
+    border: none;
+    width: 20%;
+    height: 40px;
+}
+
+#search-ticket:hover{
+    background-color: #8d450a;
+}
+

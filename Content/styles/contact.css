@@ -1,0 +1,74 @@
+﻿/*************** contact.html **************/
+
+/* section five */
+.section-five {
+    margin: 40px 0;
+}
+
+    .section-five .container div {
+        margin: 20px 0;
+    }
+
+.contact-top {
+    text-align: center;
+}
+
+    .contact-top h3 {
+        font-size: 28px;
+    }
+
+    .contact-top p {
+        font-weight: 300;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+.contact-middle div {
+    text-align: center;
+    padding: 25px 0;
+    background: #112432;
+    color: #fff;
+}
+
+    .contact-middle div span {
+        display: block;
+    }
+
+.contact-icon {
+    font-size: 30px;
+}
+
+.contact-middle div span:nth-child(2) {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.contact-middle div p {
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+
+/* section five */
+.contact-middle {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.contact-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+}
+
+.middle{
+    text-align: center;
+}
+
+.section-five .container div {
+    margin: 20px 0;
+    border-radius: 20px;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+/************** end of contact.html **********/

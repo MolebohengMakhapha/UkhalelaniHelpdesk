@@ -1,0 +1,15 @@
+.back-to-home {
+  display: block;
+  width: 40%;
+  padding: 10px;
+  background: #fb770d;
+  color: #f3f3f3;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  float: right;
+}
+
+.back-to-home:hover{
+  background-color: #b96e31;
+}
