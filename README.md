@@ -2,14 +2,14 @@
 Online complaint management system developed using MVC .NET Framework and Firebase.
 
 ## Packages Used:
-1. Microsoft.AspNet.Identity.Owin 2.2.3/
-2. Microsoft.Owin 4.1.0/
-3. Microsoft.Owin.Host.SystemWeb 4.1.0/
-4. Microsoft.Owin.Security 4.1.0/
-5. Microsoft.Owin.Security.Cookies 4.1.0/
-6. Firebase.Auth 1.0.0/
-7. FireSharp 2.0.4/
-8. FirebaseStorage.net 1.0.3/
+1. Microsoft.AspNet.Identity.Owin 2.2.3
+2. Microsoft.Owin 4.1.0
+3. Microsoft.Owin.Host.SystemWeb 4.1.0
+4. Microsoft.Owin.Security 4.1.0
+5. Microsoft.Owin.Security.Cookies 4.1.0
+6. Firebase.Auth 1.0.0
+7. FireSharp 2.0.4
+8. FirebaseStorage.net 1.0.3
 
 # Screenshots of a few pages from the web application.
 
